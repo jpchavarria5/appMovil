@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "nombre": "Julian Assange",
+            "state": "Look, kid...",
+            "description": "I've got enough on my plate as it is, and I...",
+            "image": "avatar-han.png"
+        },
+        {
+            "nombre": "Luke Skywalker",
+            "state": "Your thoughts betray you",
+            "description": "I feel the good in you, the conflict...",
+            "image": "avatar-luke.png"
+        },
+        {
+            "nombre": "Leia Organa",
+            "state": "You're My Only Hope",
+            "description": "I've placed information vital to the survival...",
+            "image": "avatar-leia.png"
+        }
+    ]
+}

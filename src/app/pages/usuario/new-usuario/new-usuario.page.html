@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="mycolor">
+    <ion-title>Nuevo usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <form [formGroup]="newForm" (ngSubmit)="postForm(newForm.value)">
+    <ion-item>
+      <ion-label>Tipo documento</ion-label>
+      <ion-select formControlName="idTipoDocumento">
+        <ion-select-option *ngFor="let tipoDocumento of tiposDocumento" [value]="tipoDocumento.idTipoDocumento">{{
+          tipoDocumento.nombreTipo }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>N° de documento</ion-label>
+      <ion-input formControlName="documentoUsuario" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input formControlName="nombreUsuario" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Apellidos</ion-label>
+      <ion-input formControlName="apellidoUsuario" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Teléfono</ion-label>
+      <ion-input formControlName="telefonoUsuario" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Correo</ion-label>
+      <ion-input formControlName="correoUsuario" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Contraseña</ion-label>
+      <ion-input formControlName="contrasenaUsuario" type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Rol</ion-label>
+      <ion-select formControlName="idRol">
+        <ion-select-option *ngFor="let rol of rolUsuario" [value]="rol.idRol">{{ rol.nombreRol }}</ion-select-option>
+      </ion-select>
+    </ion-item><br><br>
+    <ion-button type="submit" expand="full">Guardar</ion-button>
+    <ion-button type="button" expand="full" (click)="goBack()">Atras</ion-button>
+  </form>
+</ion-content>

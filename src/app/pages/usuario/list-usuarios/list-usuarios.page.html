@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="mycolor">
+    <ion-title>Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-list>
+    <ion-list-header> Lista de usuarios </ion-list-header>
+
+    <ion-item *ngFor="let user of users">
+      <ion-avatar slot="start">
+        <!-- <ion-avatar slot="start"> -->
+        <img src="../../assets/icon/user.png" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{user.nombreUsuario}} {{user.apellidoUsuario}}</h2>
+        <h4>{{user.documentoUsuario}}</h4>
+        <p>{{user.correoUsuario}}</p>
+      </ion-label>
+      <ion-avatar slot="end">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-avatar>
+    </ion-item>
+
+  </ion-list>
+  <button ion-button (click)="newUsuario()" class="btn">Nuevo Usuario</button>
+</ion-content>
