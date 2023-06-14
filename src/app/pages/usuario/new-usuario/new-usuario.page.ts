@@ -8,6 +8,7 @@ import { UsuarioInterface } from 'src/app/models/usuario.interface';
 import { TipoDocumentoInterface } from 'src/app/models/tipo-documento.interface';
 import { EstadoUsuarioInterface } from 'src/app/models/estado-usuario.interface';
 import { RolInterface } from 'src/app/models/rol.interface';
+import { AlertsService } from 'src/app/services/alerts/alerts.service';
 
 @Component({
   selector: 'app-new-usuario',
@@ -16,7 +17,7 @@ import { RolInterface } from 'src/app/models/rol.interface';
 })
 export class NewUsuarioPage implements OnInit {
 
-  constructor(private router: Router, private api: UsuarioService,) { }
+  constructor(private router: Router, private api: UsuarioService, private alerts: AlertsService) { }
 
   newForm = new FormGroup({
     documentoUsuario: new FormControl(''),
@@ -44,13 +45,13 @@ export class NewUsuarioPage implements OnInit {
     this.api.postUsuario(form).subscribe(data => {
       let respuesta: ResponseInterface = data;
       if (respuesta.status == 'ok') {
-        console.log('El usuario ha sido creado exitosamente.')
-        /* this.alerts.showSuccess('El usuario ha sido creado exitosamente.', 'Usuario creado');*/
+        /* console.log('El usuario ha sido creado exitosamente.') */
+        this.alerts.showSuccess('El usuario ha sido creado exitosamente.', 'Usuario creado');
         this.router.navigate(['usuario/list-usuarios']);
       }
       else {
-        console.log('Error al crear el usuario')
-        /* this.alerts.showError(respuesta.msj, 'Error al crear el usuario'); */
+        /* console.log('Error al crear el usuario') */
+        this.alerts.showError(respuesta.msj, 'Error al crear el usuario');
       }
     });
   }

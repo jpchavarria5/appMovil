@@ -1,30 +1,45 @@
-/* import { Injectable } from '@angular/core';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { Injectable } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlertsService {
-  constructor(private snackBar: MatSnackBar) { }
+  constructor(private toastController: ToastController) { }
 
-  showSuccess(message: string, title: string) {
-    const config: MatSnackBarConfig = new MatSnackBarConfig();
-    config.panelClass = ['success-snackbar']; // Clase CSS personalizada para personalizar la apariencia
-    config.duration = 5000; // Duración en milisegundos
-    config.verticalPosition = 'bottom';
-    config.horizontalPosition = 'center';
+  async showSuccess(message: string, title: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      header: title,
+      color: 'success',
+      duration: 5000,
+      position: 'bottom',
+      buttons: [
+        {
+          text: 'Cerrar',
+          role: 'cancel'
+        }
+      ]
+    });
 
-    this.snackBar.open(message, title, config);
+    await toast.present();
   }
 
-  showError(message: string, title: string) {
-    const config: MatSnackBarConfig = new MatSnackBarConfig();
-    config.panelClass = ['error-snackbar']; // Clase CSS personalizada para personalizar la apariencia
-    config.duration = 5000; // Duración en milisegundos
-    config.verticalPosition = 'bottom';
-    config.horizontalPosition = 'center';
+  async showError(message: string, title: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      header: title,
+      color: 'danger',
+      duration: 5000,
+      position: 'bottom',
+      buttons: [
+        {
+          text: 'Cerrar',
+          role: 'cancel'
+        }
+      ]
+    });
 
-    this.snackBar.open(message, title, config);
+    await toast.present();
   }
 }
- */
