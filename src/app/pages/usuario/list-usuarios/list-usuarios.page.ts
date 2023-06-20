@@ -31,7 +31,7 @@ export class ListUsuariosPage implements OnInit {
   }
 
   getUsuarios() {
-    return this.http.get('http://localhost:3030/usuario').pipe(map((res: any) => {
+    return this.http.get('http://192.168.1.6:3030/usuario').pipe(map((res: any) => {
       return res;
     }));
     /* return this.http.get('http://localhost:3030/usuario').pipe(map(res => res)).subscribe(data => {
